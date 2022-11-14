@@ -1,9 +1,9 @@
-<script setup type="ts">
-import HelloWorld from './components/HelloWorld.vue'
+<script setup lang="ts">
+import HelloWorld from './components/HelloWorld.vue';
 </script>
 
 <template>
-  <HelloWorld>
-    <h1>Hello World</h1>
+  <HelloWorld :numbers="[1, 2, 3]">
+    <h1>Hello Typed World</h1>
   </HelloWorld>
 </template>
