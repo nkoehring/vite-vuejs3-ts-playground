@@ -4,8 +4,9 @@ import MyCustomModal from './MyCustomModal.vue';
 
 export interface Props {
   numbers: number[];
+  msg?: string;
 }
-defineProps<Props>();
+const { numbers, msg = 'Hello World' } = defineProps<Props>();
 
 const displayModal = ref(false);
 

@@ -1,11 +1,10 @@
 <script setup lang="ts">
 export interface Props {
-  show: boolean;
   title?: string;
 }
 
 const emit = defineEmits(['close']);
-const { show, title = 'Teleported Modal' } = defineProps<Props>();
+const { title = 'Teleported Modal' } = defineProps<Props>();
 </script>
 
 <template>
