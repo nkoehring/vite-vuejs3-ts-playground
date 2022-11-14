@@ -1,32 +1,33 @@
+<script setup lang="ts">
+export interface Props {
+  show: boolean;
+  title?: string;
+}
+
+const emit = defineEmits(['close']);
+const { show, title = 'Teleported Modal' } = defineProps<Props>();
+</script>
+
 <template>
   <div class="modal">
-    <h2>MODAL TITLE</h2>
+    <h2>{{ title }}</h2>
     <slot></slot>
-    <button @click="emitClose">CLOSE ME</button>
+    <button @click="emit('close')">CLOSE ME</button>
   </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    emitClose () {
-      this.$emit('close')
-    }
-  }
+<style scoped>
+.modal {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(235, 235, 241, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-</script>
-
-<style lang="sass" scoped>
-.modal
-  position: fixed
-  z-index: 999
-  top: 0
-  left: 0
-  width: 100%
-  height: 100%
-  background-color: rgba(235, 235, 241, 0.5)
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
 </style>

@@ -1,9 +1,9 @@
 <script setup type="ts">
-export interface Props {
-  
-}
+import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <h1>Hello World</h1>
+  <HelloWorld>
+    <h1>Hello World</h1>
+  </HelloWorld>
 </template>
