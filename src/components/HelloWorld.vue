@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import MyCustomModal from './MyCustomModal.vue';
+import { noop } from '../util';
 
 export interface Props {
   numbers: number[];
+  numberMapper: (n: number) => n;
   msg?: string;
 }
-const { numbers, msg = 'Hello World' } = defineProps<Props>();
+const {
+  numbers,
+  numberMapper = noop,
+  msg = 'Hello World',
+} = defineProps<Props>();
 
 const displayModal = ref(false);
 
@@ -24,19 +30,10 @@ function hideModal() {
   </slot>
 
   <div>
-    <button @click="showModal">SHOW THE MODAL!</button>
-    <Teleport to="body">
-      <MyCustomModal @close="hideModal" v-if="displayModal">
-        <p>Look, I am the modal content teleported to the body tag!</p>
-      </MyCustomModal>
-    </Teleport>
-  </div>
-
-  <div>
-    <h1>Numbers For You</h1>
+    <p>Numbers For You:</p>
     <ol>
       <li v-for="n in numbers">
-        {{ n }}
+        {{ numberMapper(n) }}
       </li>
     </ol>
   </div>
